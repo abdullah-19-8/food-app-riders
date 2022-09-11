@@ -32,10 +32,8 @@ class _ParcelPickingScreenState extends State<ParcelPickingScreen> {
   double? sellerLat, sellerLng;
 
   getSellerData() async {
-    FirebaseFirestore.instance
-        .collection("sellers")
-        .doc(widget.sellerId)
-        .get()
+    FirebaseFirestore.instance.collection("sellers").doc(widget.sellerId).get()
+        // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
         .then((DocumentSnapshot) {
       sellerLat = DocumentSnapshot.data()!["lat"];
       sellerLng = DocumentSnapshot.data()!["lng"];

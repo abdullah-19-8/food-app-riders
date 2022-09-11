@@ -7,13 +7,14 @@ import '../maps/maps_utils.dart';
 import '../models/global.dart';
 import '../widgets/my_padding.dart';
 
+// ignore: must_be_immutable
 class ParcelDeliveringScreen extends StatefulWidget {
-   String? purchaserId;
-   String? purchaserAddress;
-   double? purchaserLat;
-   double? purchaserLng;
-   String? sellerId;
-   String? getOrderId;
+  String? purchaserId;
+  String? purchaserAddress;
+  double? purchaserLat;
+  double? purchaserLng;
+  String? sellerId;
+  String? getOrderId;
 
   ParcelDeliveringScreen({
     Key? key,
@@ -33,7 +34,9 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
   String orderTotalAmount = "";
   confirmOrderHasBeenDelivered(getOrderId, sellerId, purchaserId,
       purchaserAddress, purchaserLat, purchaserLng) {
-    String riderNewTotalEarningAmount = (double.parse(previousRiderEarnings) + double.parse(perParcelDeliveryAmount)).toString();
+    String riderNewTotalEarningAmount = (double.parse(previousRiderEarnings) +
+            double.parse(perParcelDeliveryAmount))
+        .toString();
     FirebaseFirestore.instance.collection("orders").doc(getOrderId).update({
       "status": "ended",
       "address": completeAddress,
@@ -52,7 +55,9 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
           .collection("sellers")
           .doc(widget.sellerId)
           .update({
-        "earning": (double.parse(orderTotalAmount) + (double.parse(previousSellerEarnings))).toString(),
+        "earning": (double.parse(orderTotalAmount) +
+                (double.parse(previousSellerEarnings)))
+            .toString(),
       }).then((value) {
         FirebaseFirestore.instance
             .collection("users")
@@ -66,13 +71,15 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
       });
     });
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (c) => const SplashScreen()));
+        context, MaterialPageRoute(builder: (c) => const SplashScreen()));
   }
 
-  getOrderTotalAmount(){
-    FirebaseFirestore.instance.collection("orders").doc(widget.getOrderId).get().then((snap) {
+  getOrderTotalAmount() {
+    FirebaseFirestore.instance
+        .collection("orders")
+        .doc(widget.getOrderId)
+        .get()
+        .then((snap) {
       orderTotalAmount = snap.data()!["totalAmount"].toString();
       widget.sellerId = snap.data()!["sellerUID"].toString();
     }).then((value) {
@@ -80,11 +87,14 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
     });
   }
 
-  getSellerData()
-  {
-    FirebaseFirestore.instance.collection("sellers").doc(widget.sellerId).get().then((snap){
-     previousSellerEarnings = snap.data()!["earnings"].toString();
-    } );
+  getSellerData() {
+    FirebaseFirestore.instance
+        .collection("sellers")
+        .doc(widget.sellerId)
+        .get()
+        .then((snap) {
+      previousSellerEarnings = snap.data()!["earnings"].toString();
+    });
   }
 
   @override
@@ -94,7 +104,6 @@ class _ParcelDeliveringScreenState extends State<ParcelDeliveringScreen> {
     UserLocation().getCurrentLocation();
     getOrderTotalAmount();
   }
-
 
   @override
   Widget build(BuildContext context) {

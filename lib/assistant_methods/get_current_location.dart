@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../models/global.dart';
 
 class UserLocation {
-
   LocationPermission? permission;
 
   getCurrentLocation() async {

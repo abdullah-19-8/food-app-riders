@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SimpleAppBar extends StatelessWidget with PreferredSizeWidget {
-
   final String? title;
   final PreferredSizeWidget? bottom;
   const SimpleAppBar({Key? key, this.bottom, this.title}) : super(key: key);
@@ -37,7 +36,6 @@ class SimpleAppBar extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => bottom == null
       ? Size(56, AppBar().preferredSize.height)
       : Size(56, 80 + AppBar().preferredSize.height);

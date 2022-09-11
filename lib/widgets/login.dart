@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +58,6 @@ class _LoginState extends State<Login> {
     }).catchError(
       (error) {
         Navigator.pop(context);
-
       },
     );
     if (currentUser != null) {
@@ -151,7 +152,7 @@ class _LoginState extends State<Login> {
               loginNow();
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.cyan,
+              backgroundColor: Colors.cyan,
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
             ),
             child: const Text(

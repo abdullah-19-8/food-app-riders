@@ -15,7 +15,6 @@ import 'custom_text_field.dart';
 import 'error_dialog.dart';
 import 'loading_dialog.dart';
 
-
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
 
@@ -134,7 +133,6 @@ class _RegisterState extends State<Register> {
 
   void authenticateSellerAndSignUp() async {
     User? currentUser;
-
 
     await firebaseAuth
         .createUserWithEmailAndPassword(
@@ -278,7 +276,7 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.amber,
+                      backgroundColor: Colors.amber,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -294,7 +292,7 @@ class _RegisterState extends State<Register> {
               formValidation();
             },
             style: ElevatedButton.styleFrom(
-              primary: Colors.cyan,
+              backgroundColor: Colors.cyan,
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
             ),
             child: const Text(
