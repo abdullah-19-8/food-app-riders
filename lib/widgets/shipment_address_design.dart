@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:foodpanda_riders_app/screens/shipment_screen.dart';
+import 'package:foodpanda_riders_app/screens/parcel_picking_screen.dart';
 import '../assistant_methods/get_current_location.dart';
 import '../models/global.dart';
 import '../screens/splash_screen.dart';
@@ -33,7 +33,7 @@ class ShipmentAddressDesign extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (c) => ShipmentScreen(
+        builder: (c) => ParcelPickingScreen(
           purchaserId: purchaserId,
           purchaserAddress: model!.fullAddress,
           purchaserLat: model!.lat,

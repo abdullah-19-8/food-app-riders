@@ -2,7 +2,21 @@
     package="com.example.foodpanda_riders_app">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-   <application
+
+    <queries>
+        <!-- If your app checks for SMS support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="sms" />
+        </intent>
+        <!-- If your app checks for call support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
+    </queries>
+
+    <application
         android:label="foodpanda_riders_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
@@ -34,3 +48,5 @@
             android:value="2" />
     </application>
 </manifest>
+
+    <!-- Provide required visibility configuration for API level 30 and above -->

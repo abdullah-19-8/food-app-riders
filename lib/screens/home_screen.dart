@@ -1,5 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:foodpanda_riders_app/screens/earnings_screen.dart';
+import 'package:foodpanda_riders_app/screens/history_screen.dart';
 import 'package:foodpanda_riders_app/screens/new_orders_screen.dart';
+import 'package:foodpanda_riders_app/screens/not_yes_delivered_screen.dart';
+import 'package:foodpanda_riders_app/screens/parcel_in_progress_screen.dart';
 
 import '../assistant_methods/assistant_methods.dart';
 import '../assistant_methods/get_current_location.dart';
@@ -35,15 +40,36 @@ class _HomeScreenState extends State<HomeScreen> {
             }
             if (index == 1) {
               // New Available Orders
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (c) => const ParcelInProgressScreen(),
+                ),
+              );
             }
             if (index == 2) {
-              // Not Yet Delivered
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (c) => const NotYetDeliveredScreen(),
+                ),
+              );
             }
             if (index == 3) {
-              // History
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (c) => const HistoryScreen(),
+                ),
+              );
             }
             if (index == 4) {
-              // Total Earning
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (c) => const EarningsScreen(),
+                ),
+              );
             }
             if (index == 5) {
               // Logout
@@ -93,6 +119,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
     UserLocation uLocation = UserLocation();
     uLocation.getCurrentLocation();
+    getParcelDeliveryAmount();
+    getRiderPreviousEarnings();
+  }
+
+  getRiderPreviousEarnings(){
+    FirebaseFirestore.instance.collection("riders").doc(sharedPreferences!.getString("uid")).get().then((snap){
+      previousRiderEarnings = snap.data()!["earning"].toString();
+    } );
+  }
+
+  getParcelDeliveryAmount(){
+    FirebaseFirestore.instance.collection("perDelivery").doc("perDeliveryId").get().then((snap) {
+      perParcelDeliveryAmount = snap.data()!["amount"].toString();
+    });
   }
 
   @override
