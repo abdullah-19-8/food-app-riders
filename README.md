@@ -2,15 +2,9 @@
 
 A new Flutter project.
 
-## Getting Started
+hello i hope you like this food delivery app that i cloned 
 
-This project is a starting point for a Flutter application.
+this app is for riders who will recieve and deliver orders from restaurants to users 
+ 
+i used flutter and firebase to connect these apps, and for database and authentications
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
